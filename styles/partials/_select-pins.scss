@@ -1,0 +1,35 @@
+.select-pins label{
+  width: 25px;
+  height: 25px;
+  display: inline-block;
+  border: 1px solid black;
+  border-radius: 50%;
+}
+
+input[type="radio"]:checked + label {
+  box-shadow: 0 0 3pt 2pt black;
+}
+input[type="radio"]{
+  display: none;
+}
+
+.red label{
+  background: red;
+}
+.blue label{
+  background: blue;
+}
+.yellow label{
+  background: yellow;
+}
+.green label{
+  background: green;
+}
+
+.pink label {
+  background: pink;
+}
+
+.white label {
+  background: white;
+}

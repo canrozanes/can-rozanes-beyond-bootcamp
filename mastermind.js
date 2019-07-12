@@ -83,25 +83,25 @@ document.addEventListener("DOMContentLoaded", function() {
   let _checkButton = document.querySelector(`.row button.check${mastermind.attemptNumber}`);
   _checkButton.classList.add("showButton");
   
-  let fillGuessHole = function(){
-    guessHolder.classList.remove(...mastermind.colors);
 
-    //extract index information from class name
-    let indexOfGuess = [...guessHolder.classList][1].slice(-1);
-    //make sure the board selection is null
-    mastermind.board[mastermind.attemptNumber][indexOfGuess]=null;
-
-    if (mastermind.userSelectedPin){
-      guessHolder.classList.add(mastermind.userSelectedPin);
-      mastermind.board[mastermind.attemptNumber][indexOfGuess] =
-        mastermind.userSelectedPin;
-        // console.log(mastermind.board);
-    }
-  }
-
-  }
   //add event listener to current rows guessHolder divs.
-  _guessHolders.forEach(guessHolder => guessHolder.addEventListener("click",fillGuessHole))
+  _guessHolders.forEach((guessHolder) => {
+    guessHolder.addEventListener("click", function() {
+      guessHolder.classList.remove(...mastermind.colors);
+
+      //extract index information from class name
+      let indexOfGuess = [...guessHolder.classList][1].slice(-1);
+      //make sure the board selection is null
+      mastermind.board[mastermind.attemptNumber][indexOfGuess] = null;
+
+      if (mastermind.userSelectedPin) {
+        guessHolder.classList.add(mastermind.userSelectedPin);
+        mastermind.board[mastermind.attemptNumber][indexOfGuess] =
+          mastermind.userSelectedPin;
+        // console.log(mastermind.board);
+      }
+    })})
+  
   _checkButton.addEventListener("click", function(){
     let userPattern = mastermind.board[mastermind.attemptNumber];
     
@@ -119,7 +119,9 @@ document.addEventListener("DOMContentLoaded", function() {
         _clueHolders[i+blackPegs].classList.add("white");
       }
       mastermind.attemptNumber++;
-      _guessHolders.forEach(guessHolder => guessHolder.removeEventListener("click"));
+      _guessHolders.forEach(guessHolder =>
+        guessHolder.removeEventListener("click", mastermind.fillGuessHole)
+      );
     }
     
   })

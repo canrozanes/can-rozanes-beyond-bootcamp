@@ -2,8 +2,13 @@ const mastermind = {};
 
 mastermind.colors = ["red", "blue", "yellow", "green", "pink", "white"];
 mastermind.rightAnswer = [];
+mastermind.attemptNumber = -1;
 
-mastermind.attemptNumber = 0;
+//Selectors
+mastermind._pinButtons;
+mastermind._guessHolders;
+mastermind._clueHolders;
+mastermind._checkButton;
 
 mastermind.userSelectedPin;
 mastermind.board = [
@@ -53,81 +58,96 @@ mastermind.generateClue = (userPattern, rightAnswer) => {
   }
   return { blackPegCount: blackPegCount, whitePegCount: whitePegCount };
 }
+mastermind.holeClickHandler = (e) => {
+  let currentHole = e.target;
 
-mastermind.nextAttempt = () => {
+  //first remove all the existing color classes
+  currentHole.classList.remove("pin",...mastermind.colors)
+  //extract index information from class name
 
+  let indexOfHole = [...currentHole.classList][1].slice(-1);
+
+  //make sure the current hole position is null
+  mastermind.board[mastermind.attemptNumber][indexOfHole] = null;
+
+  if (mastermind.userSelectedPin) {
+    //add color string to the class of the currentHole
+    currentHole.classList.add("pin", mastermind.userSelectedPin);
+    //update the board with the color
+    mastermind.board[mastermind.attemptNumber][indexOfHole] =
+      mastermind.userSelectedPin;
+  }
 }
+mastermind.checkButtonClickHandler = () => {
+  let userPattern = mastermind.board[mastermind.attemptNumber];
 
-document.addEventListener("DOMContentLoaded", function() {
+  if (userPattern.includes(null)) {
+    window.alert("please fill all the pin holes");
+  } else {
+    let pegs = mastermind.generateClue(userPattern, mastermind.rightAnswer);
+    let blackPegs = pegs.blackPegCount;
+    let whitePegs = pegs.whitePegCount;
+    for (let i = 0; i < blackPegs; i++) {
+      mastermind._clueHolders[i].classList.add("black");
+    }
+    for (let i = 0; i < whitePegs; i++) {
+      mastermind._clueHolders[i + blackPegs].classList.add("white");
+    }
+    if (blackPegs === 4){
+      window.alert("Congratulations you won!");
+    }
+    else if(mastermind.attemptNumber===7){
+      window.alert("Sorry you lost");
+    }
+    else{
+      //hide current levels check button
+      mastermind._checkButton.classList.remove("showButton");
+      //remove the event listener from the current levels holes
+      for (let i = 0; i < mastermind._guessHolders.length; i++) {
+        mastermind._guessHolders[i].removeEventListener("click",mastermind.holeClickHandler);
+      }
+      //go to next attempt.
+      mastermind.nextAttempt();
+    }
+  }
+}
+mastermind.init = () => {
   //generate the unique answer for the round
   mastermind.generateRightAnswer(mastermind.colors);
-
-  let _pinButtons = document.querySelectorAll(".pin input[name=pin]");
+  mastermind._pinButtons = document.querySelectorAll("input[name=pin]");
 
   //add event listener for radio buttons and if user clicks a radio button, store the color in a global variable
-  _pinButtons.forEach(pinButton =>
+  mastermind._pinButtons.forEach(pinButton =>
     pinButton.addEventListener("change", function(e) {
       mastermind.userSelectedPin = e.target.value;
       console.log(mastermind.userSelectedPin);
     })
   );
-  //only select current levels guessHolders by selecting row$
-  let _guessHolders = document.querySelectorAll(
-    `.row${mastermind.attemptNumber} .guess-holder`
-  );
-  let _clueHolders = [...document.querySelectorAll(
-    `.row${mastermind.attemptNumber} .clue-holder`
-  )];
-  console.log(_clueHolders)
-  //only make current levels check button visible using the showButton class.
-  let _checkButton = document.querySelector(`.row button.check${mastermind.attemptNumber}`);
-  _checkButton.classList.add("showButton");
-  
+};
+mastermind.nextAttempt = () => {
+  //remove event listener from previous level 
+  mastermind.attemptNumber++;
+  console.log(mastermind.attemptNumber);
+    //only select current levels guessHolders and clueHolders by selecting row$
+  mastermind._guessHolders = [...document.querySelectorAll(`.row${mastermind.attemptNumber} .guess-holder`)];
+  mastermind._clueHolders = [...document.querySelectorAll(`.row${mastermind.attemptNumber} .clue-holder`)];
 
+    //only make current levels check button visible using the showButton class.
+  mastermind._checkButton = document.querySelector(`.row button.check${mastermind.attemptNumber}`);
+  mastermind._checkButton.classList.add("showButton");
+  
   //add event listener to current rows guessHolder divs.
-  _guessHolders.forEach((guessHolder) => {
-    guessHolder.addEventListener("click", function() {
-      guessHolder.classList.remove(...mastermind.colors);
+  for (let i = 0; i < mastermind._guessHolders.length; i++) {
+    mastermind._guessHolders[i].addEventListener("click", mastermind.holeClickHandler);
+  }
+  //add event listener to current levels check button.
+  mastermind._checkButton.addEventListener("click", mastermind.checkButtonClickHandler);
+}
+document.addEventListener("DOMContentLoaded", function() {
 
-      //extract index information from class name
-      let indexOfGuess = [...guessHolder.classList][1].slice(-1);
-      //make sure the board selection is null
-      mastermind.board[mastermind.attemptNumber][indexOfGuess] = null;
-
-      if (mastermind.userSelectedPin) {
-        guessHolder.classList.add(mastermind.userSelectedPin);
-        mastermind.board[mastermind.attemptNumber][indexOfGuess] =
-          mastermind.userSelectedPin;
-        // console.log(mastermind.board);
-      }
-    })})
-  
-  _checkButton.addEventListener("click", function(){
-    let userPattern = mastermind.board[mastermind.attemptNumber];
-    
-    if (userPattern.includes(null)){
-      window.alert("please fill all the pin holes")
-    }
-    else{
-      let pegs = mastermind.generateClue(userPattern, mastermind.rightAnswer);
-      let blackPegs = pegs.blackPegCount;
-      let whitePegs = pegs.whitePegCount;
-      for(let i=0; i<blackPegs; i++){
-        _clueHolders[i].classList.add("black")
-      }
-      for (let i = 0; i < whitePegs; i++) {
-        _clueHolders[i+blackPegs].classList.add("white");
-      }
-      mastermind.attemptNumber++;
-      _guessHolders.forEach(guessHolder =>
-        guessHolder.removeEventListener("click", mastermind.fillGuessHole)
-      );
-    }
-    
-  })
-
+  mastermind.init();
+  mastermind.nextAttempt(); 
   console.log(mastermind.rightAnswer);
-  // console.log(mastermind.generateClue([1,2,3,4],[4,3,2,1]))
 });
 
 

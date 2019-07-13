@@ -1,1 +1,5 @@
 $white: #fff;
+
+@mixin pin-color($color){
+  background: radial-gradient(circle at 10px 10px, $color, black);
+}

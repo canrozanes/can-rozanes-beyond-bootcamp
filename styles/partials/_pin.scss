@@ -1,0 +1,30 @@
+.pin{
+  width: 25px;
+  height: 25px;
+  display: block;
+  border-radius: 50%;
+}
+.guess-holder.pin{
+  width: 25px;
+  height: 25px;
+}
+.red.pin{
+  @include pin-color(red);
+}
+.blue.pin{
+  @include pin-color(blue);
+}
+.yellow.pin{
+  @include pin-color(yellow);
+}
+.green.pin{
+  @include pin-color(green);
+}
+
+.pink.pin {
+  @include pin-color(pink);
+}
+
+.white.pin {
+  @include pin-color(white);
+}

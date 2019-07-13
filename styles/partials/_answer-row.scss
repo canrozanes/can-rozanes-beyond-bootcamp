@@ -1,32 +1,34 @@
 .row{
-  height: 4vh;
   display: flex;
-  *{
-    border: 1px solid black;
-  }
+  padding: 10px 0;
+  border: 1px solid black;
 }
 
 .guess-container{
   height: 100%;
   width: 70%;
-  .guesses{
-    display: flex;
-    .guess-holder{
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    margin: 4px auto;
-    }
-  }
+  border-radius: 20px;
+}
+.guesses{
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
+.guess-holder{
+  margin: 10px auto;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 5px, rgba(0,0,0,0) 10px);
 }
 .clue-container{
   height: 100%;
   width: 10%;
   .clues{
     display: flex;
+    padding: 10px 0;
     height: 30px;
     width: 30px;
-    margin: 0 auto;
     flex-wrap: wrap;
     .clue-holder{
       width: 10px;

@@ -199,36 +199,40 @@ body {
   height: 80vh;
   width: 500px;
   border: 1px solid black;
-  background: chocolate;
+  background: url("../assets/wood-background.jpeg");
+  background-size: cover;
 }
 
 .row {
-  height: 4vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-}
-
-.row * {
+  padding: 10px 0;
   border: 1px solid black;
 }
 
 .guess-container {
   height: 100%;
   width: 70%;
+  border-radius: 20px;
 }
 
-.guess-container .guesses {
+.guesses {
+  height: 50px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-.guess-container .guesses .guess-holder {
+.guess-holder {
+  margin: 10px auto;
   width: 25px;
   height: 25px;
   border-radius: 50%;
-  margin: 4px auto;
+  background: radial-gradient(circle, black 0%, black 5px, rgba(0, 0, 0, 0) 10px);
 }
 
 .clue-container {
@@ -240,9 +244,9 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  padding: 10px 0;
   height: 30px;
   width: 30px;
-  margin: 0 auto;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
 }
@@ -263,45 +267,59 @@ body {
   display: block;
 }
 
-.select-pins label {
+.pin {
   width: 25px;
   height: 25px;
-  display: inline-block;
-  border: 1px solid black;
+  display: block;
   border-radius: 50%;
 }
 
+.guess-holder.pin {
+  width: 25px;
+  height: 25px;
+}
+
+.red.pin {
+  background: radial-gradient(circle at 10px 10px, red, black);
+}
+
+.blue.pin {
+  background: radial-gradient(circle at 10px 10px, blue, black);
+}
+
+.yellow.pin {
+  background: radial-gradient(circle at 10px 10px, yellow, black);
+}
+
+.green.pin {
+  background: radial-gradient(circle at 10px 10px, green, black);
+}
+
+.pink.pin {
+  background: radial-gradient(circle at 10px 10px, pink, black);
+}
+
+.white.pin {
+  background: radial-gradient(circle at 10px 10px, white, black);
+}
+
 input[type="radio"]:checked + label {
-  -webkit-box-shadow: 0 0 3pt 2pt black;
-          box-shadow: 0 0 3pt 2pt black;
+  -webkit-box-shadow: 0 0 3pt 2pt white;
+          box-shadow: 0 0 3pt 2pt white;
 }
 
 input[type="radio"] {
   display: none;
 }
 
-.red label {
-  background: red;
-}
-
-.blue label {
-  background: blue;
-}
-
-.yellow label {
-  background: yellow;
-}
-
-.green label {
-  background: green;
-}
-
-.pink label {
-  background: pink;
-}
-
-.white label {
-  background: white;
+form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 70%;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  padding: 10px 0;
 }
 
 .guesses .red {

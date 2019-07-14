@@ -88,10 +88,10 @@ mastermind.checkButtonClickHandler = () => {
     let blackPegs = pegs.blackPegCount;
     let whitePegs = pegs.whitePegCount;
     for (let i = 0; i < blackPegs; i++) {
-      mastermind._clueHolders[i].classList.add("black");
+      mastermind._clueHolders[i].classList.add("peg", "black");
     }
     for (let i = 0; i < whitePegs; i++) {
-      mastermind._clueHolders[i + blackPegs].classList.add("white");
+      mastermind._clueHolders[i + blackPegs].classList.add("peg", "white");
     }
     if (blackPegs === 4){
       window.alert("Congratulations you won!");

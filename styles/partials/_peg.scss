@@ -1,0 +1,19 @@
+.peg{
+  width: 10px;
+  height: 10px;
+  display: block;
+  border-radius: 50%;
+}
+
+.clue-holder.peg{
+  width: 10px;
+  height: 10px;
+}
+
+.peg.white{
+  background: radial-gradient(circle at 4px 4px, white, black);
+}
+
+.peg.black{
+  background: radial-gradient(circle at 3px 3px, #333333, black);
+}

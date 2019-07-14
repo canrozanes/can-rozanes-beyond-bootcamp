@@ -1,23 +1,19 @@
-
-
 .row{
   display: flex;
   padding: 10px 0;
+  // border: 1px solid purple;
 }
 
 .guess-container{
-  height: 100%;
-  width: calc(70% - 25px);
-  border-radius: 20px;
-  border: 1px solid black;
-  margin-left: 25px;
-}
-.guesses{
-  height: 50px;
+  width: 60%;
+  border-radius: 10px;
+  // border: 1px solid black;
   display: flex;
   align-items: center;
-  
+  background: rgba(#896d42, 0.6);
+  box-shadow: inset 0 3px 10px #000000;
 }
+
 .guess-holder{
   margin: 10px auto;
   width: 25px;
@@ -26,28 +22,27 @@
   background: radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(0,0,0,0.5) 40%, rgba(0,0,0,0) 50%);
 }
 .clue-container{
-  height: 100%;
-  width: 10%;
-  margin-left: 20px;
-  border: 1px solid black;
+  width: 50px;
+  margin-left: 25px;
   border-radius: 10px;
-  .clues{
-    display: flex;
-    padding: 10px;
-    height: 50px;
-    width: 50px;
-    flex-wrap: wrap;
-    .clue-holder{
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      margin: 2px auto;
-    }
-  }
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px;
+  flex-wrap: wrap;
+  background: rgba(#896d42, 0.6);
+  box-shadow: inset 0 3px 10px #000000;
+}
+.clue-holder{
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin: 2px 2px;
+  background: radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(0,0,0,0.5) 40%, rgba(0,0,0,0) 50%);
 }
 .row button{
-  margin: 0 auto;
   display: none;
+  margin-left: 25px;
   &.showButton{
     display: block;
   }

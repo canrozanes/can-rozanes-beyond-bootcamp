@@ -1,4 +1,9 @@
-$white: #fff;
+$board-color: #553C2A;
+$board-accent: #896d42;
+$body-color: #70D1A4;
+$accent: #f6e27f;
+
+$header-font: Baloo, sans-serif;
 
 @mixin pin-color($color){
   background: radial-gradient(circle at 10px 10px, $color, black);

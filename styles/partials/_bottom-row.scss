@@ -1,0 +1,20 @@
+.bottom-row{
+  display: flex;
+  form {
+    display: flex;
+    width: calc(70% + 30px);
+    justify-content: space-between;
+    padding: 10px 0;
+  }
+  button{
+    margin-left: 25px;
+  }
+}
+
+
+input[type="radio"]:checked + label {
+  box-shadow: 0 0 3pt 2pt white;
+}
+input[type="radio"]{
+  display: none;
+}

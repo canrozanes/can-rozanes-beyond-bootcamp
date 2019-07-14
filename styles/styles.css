@@ -195,10 +195,23 @@ body {
   max-width: 1400px;
 }
 
+button {
+  width: 75px;
+  border: none;
+  border-radius: 10px;
+  background: #f6e27f;
+}
+
+h1 {
+  font-family: Baloo, sans-serif;
+  text-align: center;
+}
+
 .game-container {
   margin: 0 auto;
   width: 500px;
-  background: url("../assets/wood-background.jpeg");
+  background: -webkit-gradient(linear, left bottom, left top, from(rgba(139, 69, 19, 0.3)), to(rgba(139, 69, 19, 0.3))), url("../assets/wood-background.jpeg");
+  background: linear-gradient(0deg, rgba(139, 69, 19, 0.3), rgba(139, 69, 19, 0.3)), url("../assets/wood-background.jpeg");
   background-size: cover;
   padding: 25px 0;
   border-radius: 10px;
@@ -308,6 +321,27 @@ body {
   background: radial-gradient(circle at 10px 10px, white, black);
 }
 
+.bottom-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.bottom-row form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: calc(70% + 30px);
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 10px 0;
+}
+
+.bottom-row button {
+  margin-left: 25px;
+}
+
 input[type="radio"]:checked + label {
   -webkit-box-shadow: 0 0 3pt 2pt white;
           box-shadow: 0 0 3pt 2pt white;
@@ -315,16 +349,6 @@ input[type="radio"]:checked + label {
 
 input[type="radio"] {
   display: none;
-}
-
-form {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  width: 70%;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  padding: 10px 0;
 }
 
 .peg {

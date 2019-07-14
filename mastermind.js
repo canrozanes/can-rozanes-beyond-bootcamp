@@ -2,6 +2,7 @@ const mastermind = {};
 
 mastermind.colors = ["red", "blue", "yellow", "green", "pink", "white"];
 mastermind.rightAnswer = [];
+mastermind.gameStarted = false;
 mastermind.attemptNumber = -1;
 
 //Selectors
@@ -9,6 +10,7 @@ mastermind._pinButtons;
 mastermind._guessHolders;
 mastermind._clueHolders;
 mastermind._checkButton;
+mastermind._startResetButton;
 
 mastermind.userSelectedPin;
 mastermind.board = [
@@ -28,6 +30,7 @@ mastermind.getRandomInt = (min, max) => {
 }
 //generate the answer combination and store it in mastermind.rightAnswer
 mastermind.generateRightAnswer = (colors) => {
+  mastermind.rightAnswer = [];
   for(let i=0; i<4; i++){
     mastermind.rightAnswer.push(
       colors[mastermind.getRandomInt(0, 6)]
@@ -95,6 +98,7 @@ mastermind.checkButtonClickHandler = () => {
     }
     if (blackPegs === 4){
       window.alert("Congratulations you won!");
+      mastermind._checkButton.classList.remove("showButton");
     }
     else if(mastermind.attemptNumber===7){
       window.alert("Sorry you lost");
@@ -111,21 +115,24 @@ mastermind.checkButtonClickHandler = () => {
     }
   }
 }
-mastermind.init = () => {
-  //generate the unique answer for the round
-  mastermind.generateRightAnswer(mastermind.colors);
-  mastermind._pinButtons = document.querySelectorAll("input[name=pin]");
 
-  //add event listener for radio buttons and if user clicks a radio button, store the color in a global variable
-  mastermind._pinButtons.forEach(pinButton =>
-    pinButton.addEventListener("change", function(e) {
-      mastermind.userSelectedPin = e.target.value;
-      console.log(mastermind.userSelectedPin);
-    })
-  );
+mastermind.startResetClickHandler = (e) => {
+  console.log(e.target)
+  if (e.target.innerHTML === "Reset") {
+    window.location.reload();
+  }
+  if(e.target.innerHTML==="Start"){
+    mastermind._startResetButton.innerText = "Reset";
+    
+    //enable the radio buttons
+    mastermind._pinButtons.forEach(pinButton => {
+      pinButton.disabled = false;
+    });
+    mastermind.nextAttempt();
+  }
 };
+
 mastermind.nextAttempt = () => {
-  //remove event listener from previous level 
   mastermind.attemptNumber++;
   console.log(mastermind.attemptNumber);
     //only select current levels guessHolders and clueHolders by selecting row$
@@ -143,10 +150,32 @@ mastermind.nextAttempt = () => {
   //add event listener to current levels check button.
   mastermind._checkButton.addEventListener("click", mastermind.checkButtonClickHandler);
 }
+mastermind.pinSelectHandleChange = (e) => {
+  mastermind.userSelectedPin = e.target.value;
+  console.log(mastermind.userSelectedPin);
+}
+
+mastermind.init = () => {
+  mastermind._startResetButton = document.querySelector(".start-reset");
+  //add event listener for the star-reset button
+  mastermind._startResetButton.addEventListener("click",mastermind.startResetClickHandler);
+
+    //generate the unique answer for the round
+  mastermind.generateRightAnswer(mastermind.colors);
+  mastermind._pinButtons = document.querySelectorAll("input[name=pin]");
+
+  //add event listener for radio buttons and if user clicks a radio button, store the color in a global variable
+  mastermind._pinButtons.forEach(pinButton =>
+    pinButton.addEventListener("change", mastermind.pinSelectHandleChange)
+  );
+  mastermind._pinButtons.forEach(pinButton => {pinButton.disabled = true}
+  );
+};
+
+//when page loads, start the game.
 document.addEventListener("DOMContentLoaded", function() {
 
   mastermind.init();
-  mastermind.nextAttempt(); 
   console.log(mastermind.rightAnswer);
 });
 

@@ -201,6 +201,7 @@ body {
   border: 1px solid black;
   background: url("../assets/wood-background.jpeg");
   background-size: cover;
+  padding: 20px 0;
 }
 
 .row {
@@ -208,13 +209,14 @@ body {
   display: -ms-flexbox;
   display: flex;
   padding: 10px 0;
-  border: 1px solid black;
 }
 
 .guess-container {
   height: 100%;
-  width: 70%;
+  width: calc(70% - 25px);
   border-radius: 20px;
+  border: 1px solid black;
+  margin-left: 25px;
 }
 
 .guesses {
@@ -232,21 +234,24 @@ body {
   width: 25px;
   height: 25px;
   border-radius: 50%;
-  background: radial-gradient(circle, black 0%, black 5px, rgba(0, 0, 0, 0) 10px);
+  background: radial-gradient(circle, black 0%, rgba(0, 0, 0, 0.5) 40%, rgba(0, 0, 0, 0) 50%);
 }
 
 .clue-container {
   height: 100%;
   width: 10%;
+  margin-left: 20px;
+  border: 1px solid black;
+  border-radius: 10px;
 }
 
 .clue-container .clues {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  padding: 10px 0;
-  height: 30px;
-  width: 30px;
+  padding: 10px;
+  height: 50px;
+  width: 50px;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
 }

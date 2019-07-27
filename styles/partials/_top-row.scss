@@ -4,25 +4,30 @@
 
 .answer-holder{
   position: relative;
+  font-weight: 700;
 }
 
 .answer-cover{
   position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  top: 0px;
+  right: 0px;
+  bottom:0px;
+  left: 0px;
   background: $accent;
   border-radius: 10px;
   text-align: center;
-  padding-top: 15px;
-  z-index: 1;
+  padding: 15px;
+  transform-origin: top;
+  transition: all 0.75s ease-in-out;
+
 }
+
 
 .answer-cover.reveal{
-  display: none;
+  transform: perspective(1200px) rotateX(-91deg);
 }
 
-.top-row button.rules{
+.top-row button.rules-button{
   display: block;
+  width: 100px;
 }

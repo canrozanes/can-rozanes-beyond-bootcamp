@@ -1,4 +1,4 @@
-.start-screen{
+.rules-page{
   position: absolute;
   top: 0;
   bottom: 0;
@@ -10,7 +10,7 @@
   align-items: center;
 }
 
-.start-screen h2{
+.rules-page h2{
   color: #333;
   text-shadow: 0px 1px 0px rgba(255,255,255,.3), 0px -1px 0px rgba(0,0,0,.7);
   text-align: center;
@@ -18,9 +18,14 @@
   font-size: 40px;
 }
 
-.start-screen p {
+.rules-page p {
   font-family: 'Nanum Gothic', sans-serif;
+  font-weight: 700;
 }
-.start-screen li{
+.rules-page li{
   margin: 12px 10px;
+}
+
+.close-rules-button {
+  height: 45px;
 }

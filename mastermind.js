@@ -1,5 +1,6 @@
 const mastermind = {};
 
+//all the possible colors in the game
 mastermind.colors = ["red", "blue", "yellow", "green", "pink", "white"];
 mastermind.rightAnswer = [];
 mastermind.gameStarted = false;
@@ -11,6 +12,11 @@ mastermind._guessHolders;
 mastermind._clueHolders;
 mastermind._checkButton;
 mastermind._startResetButton;
+mastermind._rulesButton;
+mastermind._closeRulesButton;
+mastermind._rulesPage;
+mastermind._answerHolders;
+mastermind._answerCover;
 
 mastermind.userSelectedPin;
 mastermind.board = [
@@ -36,6 +42,15 @@ mastermind.generateRightAnswer = (colors) => {
       colors[mastermind.getRandomInt(0, 6)]
     );
   }
+}
+
+mastermind.revealRightAnswer = () => {
+  mastermind._answerHolders = [...document.querySelectorAll(".answer-holder .guess-holder")];
+  for(let i=0; i<mastermind._answerHolders.length; i++){
+    mastermind._answerHolders[i].classList.add("pin", mastermind.rightAnswer[i])
+  }
+  mastermind._answerCover = document.querySelector(".answer-cover");
+  mastermind._answerCover.classList.add("reveal")
 }
 
 mastermind.generateClue = (userPattern, rightAnswer) => {
@@ -97,10 +112,14 @@ mastermind.checkButtonClickHandler = () => {
       mastermind._clueHolders[i + blackPegs].classList.add("peg", "white");
     }
     if (blackPegs === 4){
-      window.alert("Congratulations you won!");
       mastermind._checkButton.classList.remove("showButton");
+      mastermind.revealRightAnswer();
+      setTimeout(()=>{
+        window.alert("Congratulations you won!")
+      }, 1000);
     }
     else if(mastermind.attemptNumber===7){
+      mastermind.revealRightAnswer();
       window.alert("Sorry you lost");
     }
     else{
@@ -114,6 +133,16 @@ mastermind.checkButtonClickHandler = () => {
       mastermind.nextAttempt();
     }
   }
+}
+mastermind.rulesButtonClickHandler = (e) => {
+  mastermind._rulesPage.style.display = "flex";
+}
+mastermind.closeRulesButtonClickHandler = (e) => {
+  mastermind._rulesPage.style.display = "none";
+}
+
+mastermind.enableDisablePinSelectButtons = (isEnabled) => {
+
 }
 
 mastermind.startResetClickHandler = (e) => {
@@ -157,8 +186,15 @@ mastermind.pinSelectHandleChange = (e) => {
 
 mastermind.init = () => {
   mastermind._startResetButton = document.querySelector(".start-reset");
+  mastermind._rulesButton = document.querySelector(".rules-button");
+  mastermind._rulesPage = document.querySelector('.rules-page');
+  mastermind._closeRulesButton = document.querySelector(".close-rules-button");
+
   //add event listener for the star-reset button
   mastermind._startResetButton.addEventListener("click",mastermind.startResetClickHandler);
+
+  mastermind._rulesButton.addEventListener("click", mastermind.rulesButtonClickHandler);
+  mastermind._closeRulesButton.addEventListener("click", mastermind.closeRulesButtonClickHandler)
 
     //generate the unique answer for the round
   mastermind.generateRightAnswer(mastermind.colors);
@@ -168,13 +204,14 @@ mastermind.init = () => {
   mastermind._pinButtons.forEach(pinButton =>
     pinButton.addEventListener("change", mastermind.pinSelectHandleChange)
   );
-  mastermind._pinButtons.forEach(pinButton => {pinButton.disabled = true}
-  );
+  mastermind._pinButtons.forEach(pinButton => {
+    pinButton.disabled = true;
+    pinButton.checked = false;
+  });
 };
 
 //when page loads, start the game.
 document.addEventListener("DOMContentLoaded", function() {
-
   mastermind.init();
   console.log(mastermind.rightAnswer);
 });

@@ -43,7 +43,19 @@
 .row button{
   display: none;
   margin-left: 25px;
+  width: calc(40% - 100px);
   &.showButton{
     display: block;
+  }
+}
+
+@media(max-width: 550px){
+  
+  .clue-container{
+    margin-left: 10px
+  }
+  .row button{
+    margin-left: 10px;
+    width: calc(40% - 70px);
   }
 }

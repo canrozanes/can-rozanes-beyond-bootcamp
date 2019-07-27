@@ -9,3 +9,10 @@
   position: relative;
 
 }
+
+@media(max-width: 550px){
+  .game-container{
+    width: 95%;
+    padding: 10px 0;
+  }
+}

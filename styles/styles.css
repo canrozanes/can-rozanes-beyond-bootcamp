@@ -196,17 +196,28 @@ body {
 }
 
 button {
-  width: 75px;
   border: none;
   border-radius: 10px;
   background: #f6e27f;
   -webkit-box-shadow: 1px 1px 1px 1px black;
           box-shadow: 1px 1px 1px 1px black;
+  font-weight: 700;
+  cursor: pointer;
 }
 
 button:active {
   -webkit-box-shadow: 0px 0px 0px 0px black;
           box-shadow: 0px 0px 0px 0px black;
+}
+
+@media (max-width: 550px) {
+  .wrapper {
+    padding: 0 15px;
+  }
+  button {
+    padding: 0;
+    font-size: 14px;
+  }
 }
 
 h1 {
@@ -227,7 +238,14 @@ h1 {
   position: relative;
 }
 
-.start-screen {
+@media (max-width: 550px) {
+  .game-container {
+    width: 95%;
+    padding: 10px 0;
+  }
+}
+
+.rules-page {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -244,7 +262,7 @@ h1 {
           align-items: center;
 }
 
-.start-screen h2 {
+.rules-page h2 {
   color: #333;
   text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.3), 0px -1px 0px rgba(0, 0, 0, 0.7);
   text-align: center;
@@ -252,12 +270,17 @@ h1 {
   font-size: 40px;
 }
 
-.start-screen p {
+.rules-page p {
   font-family: 'Nanum Gothic', sans-serif;
+  font-weight: 700;
 }
 
-.start-screen li {
+.rules-page li {
   margin: 12px 10px;
+}
+
+.close-rules-button {
+  height: 45px;
 }
 
 .top-row {
@@ -268,27 +291,33 @@ h1 {
 
 .answer-holder {
   position: relative;
+  font-weight: 700;
 }
 
 .answer-cover {
   position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
   background: #f6e27f;
   border-radius: 10px;
   text-align: center;
-  padding-top: 15px;
-  z-index: 1;
+  padding: 15px;
+  -webkit-transform-origin: top;
+          transform-origin: top;
+  -webkit-transition: all 0.75s ease-in-out;
+  transition: all 0.75s ease-in-out;
 }
 
 .answer-cover.reveal {
-  display: none;
+  -webkit-transform: perspective(1200px) rotateX(-91deg);
+          transform: perspective(1200px) rotateX(-91deg);
 }
 
-.top-row button.rules {
+.top-row button.rules-button {
   display: block;
+  width: 100px;
 }
 
 .row {
@@ -351,10 +380,21 @@ h1 {
 .row button {
   display: none;
   margin-left: 25px;
+  width: calc(40% - 100px);
 }
 
 .row button.showButton {
   display: block;
+}
+
+@media (max-width: 550px) {
+  .clue-container {
+    margin-left: 10px;
+  }
+  .row button {
+    margin-left: 10px;
+    width: calc(40% - 70px);
+  }
 }
 
 .pin {
@@ -400,21 +440,25 @@ h1 {
   display: -ms-flexbox;
   display: flex;
   padding-top: 25px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .bottom-row form {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: calc(70% + 30px);
+  width: calc(60% + 75px);
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
   padding: 10px 0;
 }
 
-.bottom-row button {
+.bottom-row button.start-reset {
   margin-left: 25px;
+  display: block;
 }
 
 input[type="radio"]:checked + label {
@@ -424,6 +468,16 @@ input[type="radio"]:checked + label {
 
 input[type="radio"] {
   display: none;
+}
+
+@media (max-width: 550px) {
+  .bottom-row {
+    padding-top: 10px;
+  }
+  .bottom-row button {
+    margin-left: 10px;
+    width: calc(40% - 60px);
+  }
 }
 
 .peg {

@@ -1,5 +1,6 @@
 .bottom-row{
   display: flex;
+  padding-top: 25px;
   form {
     display: flex;
     width: calc(70% + 30px);
@@ -13,7 +14,7 @@
 
 
 input[type="radio"]:checked + label {
-  box-shadow: 0 0 3pt 2pt white;
+  box-shadow: 0 0 3px 2px white;
 }
 input[type="radio"]{
   display: none;

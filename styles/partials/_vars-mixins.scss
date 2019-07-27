@@ -3,7 +3,9 @@ $board-accent: #896d42;
 $body-color: #70D1A4;
 $accent: #f6e27f;
 
-$header-font: Baloo, sans-serif;
+$header-font: 'Baloo', sans-serif;
+$body-font: 'Nanum Gothic', sans-serif;
+
 
 @mixin pin-color($color){
   background: radial-gradient(circle at 10px 10px, $color, black);

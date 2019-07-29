@@ -4,28 +4,37 @@
   display: block;
   border-radius: 50%;
   box-shadow: 0 1px 1px 1px black;
+  cursor: pointer;
 }
 .guess-holder.pin{
   width: 25px;
   height: 25px;
 }
 .red.pin{
-  @include pin-color(red);
+  @include pin-color( #FF4136 );
 }
 .blue.pin{
-  @include pin-color(blue);
+  @include pin-color( #0074D9 );
 }
 .yellow.pin{
-  @include pin-color(yellow);
+  @include pin-color( #FFDC00 );
 }
 .green.pin{
-  @include pin-color(green);
+  @include pin-color( #2ECC40 );
 }
 
 .pink.pin {
-  @include pin-color(pink);
+  @include pin-color( #F012BE );
 }
 
 .white.pin {
-  @include pin-color(white);
+  @include pin-color( #DDDDDD );
+}
+@media(max-width: 500px){
+  .bottom-row{
+    padding-top: 10px;
+    button{
+      margin-left: 10px;
+    }
+  }
 }

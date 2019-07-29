@@ -50,12 +50,28 @@
 }
 
 @media(max-width: 550px){
-  
+  .row{
+    padding: 8px 0;
+  }
   .clue-container{
     margin-left: 10px
   }
   .row button{
     margin-left: 10px;
     width: calc(40% - 70px);
+  }
+}
+
+
+@media(max-width: 376px){
+  .row{
+    padding: 3px 0;
+  }
+  .clue-container{
+    margin-left: 6px
+  }
+  .row button{
+    margin-left: 6px;
+    width: calc(40% - 62px);
   }
 }

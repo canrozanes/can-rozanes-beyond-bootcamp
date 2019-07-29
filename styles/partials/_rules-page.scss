@@ -11,11 +11,10 @@
 }
 
 .rules-page h2{
-  color: #333;
-  text-shadow: 0px 1px 0px rgba(255,255,255,.3), 0px -1px 0px rgba(0,0,0,.7);
+  color: black;
   text-align: center;
-  font-family: $body-font;
-  font-size: 40px;
+  font-family: $header-font;
+  font-size: 30px;
 }
 
 .rules-page p {
@@ -28,4 +27,30 @@
 
 .close-rules-button {
   height: 45px;
+  width: calc(40% - 100px);
+}
+
+@media(max-width: 550px){
+  .rules-page p {
+    margin: 5px; 
+  }
+  .close-rules-button {
+    width: calc(40% - 70px);
+  }
+}
+@media(max-width: 400px){
+  .rules-page p {
+    margin: 8px 0;
+    font-size: 16px 
+  }
+  .rules-page ul{
+    padding: 2px;
+    width: 90%;
+  }
+  .rules-page li {
+    margin: 5px 0px; 
+  }
+  .close-rules-button {
+    width: calc(40% - 62px)
+  }
 }

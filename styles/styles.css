@@ -187,6 +187,11 @@ body {
   margin: 0;
   font-size: .85rem;
   background-color: #70D1A4;
+  padding-top: 50px;
+}
+
+main {
+  position: relative;
 }
 
 .wrapper {
@@ -198,7 +203,7 @@ body {
 button {
   border: none;
   border-radius: 10px;
-  background: #f6e27f;
+  background: #ced0ce;
   -webkit-box-shadow: 1px 1px 1px 1px black;
           box-shadow: 1px 1px 1px 1px black;
   font-weight: 700;
@@ -211,8 +216,21 @@ button:active {
 }
 
 @media (max-width: 550px) {
+  body {
+    padding-top: 5px;
+  }
   .wrapper {
     padding: 0 15px;
+  }
+  button {
+    padding: 0;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 400px) {
+  .wrapper {
+    padding: 0 8px;
   }
   button {
     padding: 0;
@@ -235,13 +253,22 @@ h1 {
   border-radius: 10px;
   -webkit-box-shadow: 5px 5px 6px rgba(0, 0, 0, 0.75);
           box-shadow: 5px 5px 6px rgba(0, 0, 0, 0.75);
-  position: relative;
+}
+
+.game-container h1 {
+  margin: 0;
 }
 
 @media (max-width: 550px) {
   .game-container {
     width: 95%;
     padding: 10px 0;
+  }
+}
+
+@media (max-width: 359px) {
+  .game-container h1 {
+    display: none;
   }
 }
 
@@ -263,11 +290,10 @@ h1 {
 }
 
 .rules-page h2 {
-  color: #333;
-  text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.3), 0px -1px 0px rgba(0, 0, 0, 0.7);
+  color: black;
   text-align: center;
-  font-family: "Nanum Gothic", sans-serif;
-  font-size: 40px;
+  font-family: "Baloo", sans-serif;
+  font-size: 30px;
 }
 
 .rules-page p {
@@ -281,6 +307,33 @@ h1 {
 
 .close-rules-button {
   height: 45px;
+  width: calc(40% - 100px);
+}
+
+@media (max-width: 550px) {
+  .rules-page p {
+    margin: 5px;
+  }
+  .close-rules-button {
+    width: calc(40% - 70px);
+  }
+}
+
+@media (max-width: 400px) {
+  .rules-page p {
+    margin: 8px 0;
+    font-size: 16px;
+  }
+  .rules-page ul {
+    padding: 2px;
+    width: 90%;
+  }
+  .rules-page li {
+    margin: 5px 0px;
+  }
+  .close-rules-button {
+    width: calc(40% - 62px);
+  }
 }
 
 .top-row {
@@ -300,14 +353,14 @@ h1 {
   right: 0px;
   bottom: 0px;
   left: 0px;
-  background: #f6e27f;
+  background: #ced0ce;
   border-radius: 10px;
   text-align: center;
   padding: 15px;
   -webkit-transform-origin: top;
           transform-origin: top;
-  -webkit-transition: all 0.75s ease-in-out;
-  transition: all 0.75s ease-in-out;
+  -webkit-transition: all 2.00s ease-in-out;
+  transition: all 2.00s ease-in-out;
 }
 
 .answer-cover.reveal {
@@ -388,12 +441,28 @@ h1 {
 }
 
 @media (max-width: 550px) {
+  .row {
+    padding: 8px 0;
+  }
   .clue-container {
     margin-left: 10px;
   }
   .row button {
     margin-left: 10px;
     width: calc(40% - 70px);
+  }
+}
+
+@media (max-width: 376px) {
+  .row {
+    padding: 3px 0;
+  }
+  .clue-container {
+    margin-left: 6px;
+  }
+  .row button {
+    margin-left: 6px;
+    width: calc(40% - 62px);
   }
 }
 
@@ -404,6 +473,7 @@ h1 {
   border-radius: 50%;
   -webkit-box-shadow: 0 1px 1px 1px black;
           box-shadow: 0 1px 1px 1px black;
+  cursor: pointer;
 }
 
 .guess-holder.pin {
@@ -412,27 +482,36 @@ h1 {
 }
 
 .red.pin {
-  background: radial-gradient(circle at 10px 10px, red, black);
+  background: radial-gradient(circle at 10px 10px, #FF4136, #444444);
 }
 
 .blue.pin {
-  background: radial-gradient(circle at 10px 10px, blue, black);
+  background: radial-gradient(circle at 10px 10px, #0074D9, #444444);
 }
 
 .yellow.pin {
-  background: radial-gradient(circle at 10px 10px, yellow, black);
+  background: radial-gradient(circle at 10px 10px, #FFDC00, #444444);
 }
 
 .green.pin {
-  background: radial-gradient(circle at 10px 10px, green, black);
+  background: radial-gradient(circle at 10px 10px, #2ECC40, #444444);
 }
 
 .pink.pin {
-  background: radial-gradient(circle at 10px 10px, pink, black);
+  background: radial-gradient(circle at 10px 10px, #F012BE, #444444);
 }
 
 .white.pin {
-  background: radial-gradient(circle at 10px 10px, white, black);
+  background: radial-gradient(circle at 10px 10px, #DDDDDD, #444444);
+}
+
+@media (max-width: 500px) {
+  .bottom-row {
+    padding-top: 10px;
+  }
+  .bottom-row button {
+    margin-left: 10px;
+  }
 }
 
 .bottom-row {
@@ -474,9 +553,22 @@ input[type="radio"] {
   .bottom-row {
     padding-top: 10px;
   }
-  .bottom-row button {
+  .bottom-row button.start-reset {
     margin-left: 10px;
-    width: calc(40% - 60px);
+    width: calc(40% - 70px);
+  }
+  .bottom-row form {
+    width: calc(60% + 60px);
+  }
+}
+
+@media (max-width: 359px) {
+  .bottom-row {
+    padding-top: 8px;
+  }
+  .bottom-row button.start-reset {
+    margin-left: 6px;
+    width: calc(40% - 62px);
   }
 }
 

@@ -25,9 +25,21 @@ input[type="radio"]{
 @media(max-width: 550px){
   .bottom-row{
     padding-top: 10px;
-    button{
+    button.start-reset{
       margin-left: 10px;
-      width: calc(40% - 60px)
+      width: calc(40% - 70px)
+    }
+    form{
+      width: calc(60% + 60px);
+    }
+  }
+}
+@media(max-width: 359px){
+  .bottom-row{
+    padding-top: 8px;
+    button.start-reset{
+      margin-left: 6px;
+      width: calc(40% - 62px)
     }
   }
 }

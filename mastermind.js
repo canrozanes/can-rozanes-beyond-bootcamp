@@ -116,11 +116,13 @@ mastermind.checkButtonClickHandler = () => {
       mastermind.revealRightAnswer();
       setTimeout(()=>{
         window.alert("Congratulations you won!")
-      }, 1000);
+      }, 2500);
     }
     else if(mastermind.attemptNumber===7){
       mastermind.revealRightAnswer();
-      window.alert("Sorry you lost");
+      setTimeout(() => {
+        window.alert("Sorry you lost");
+      }, 2500);
     }
     else{
       //hide current levels check button
@@ -128,6 +130,7 @@ mastermind.checkButtonClickHandler = () => {
       //remove the event listener from the current levels holes
       for (let i = 0; i < mastermind._guessHolders.length; i++) {
         mastermind._guessHolders[i].removeEventListener("click",mastermind.holeClickHandler);
+        mastermind._guessHolders[i].style.cursor = "default"
       }
       //go to next attempt.
       mastermind.nextAttempt();
@@ -139,10 +142,6 @@ mastermind.rulesButtonClickHandler = (e) => {
 }
 mastermind.closeRulesButtonClickHandler = (e) => {
   mastermind._rulesPage.style.display = "none";
-}
-
-mastermind.enableDisablePinSelectButtons = (isEnabled) => {
-
 }
 
 mastermind.startResetClickHandler = (e) => {
@@ -175,6 +174,7 @@ mastermind.nextAttempt = () => {
   //add event listener to current rows guessHolder divs.
   for (let i = 0; i < mastermind._guessHolders.length; i++) {
     mastermind._guessHolders[i].addEventListener("click", mastermind.holeClickHandler);
+    mastermind._guessHolders[i].style.cursor = "pointer";
   }
   //add event listener to current levels check button.
   mastermind._checkButton.addEventListener("click", mastermind.checkButtonClickHandler);

@@ -145,7 +145,6 @@ mastermind.closeRulesButtonClickHandler = (e) => {
 }
 
 mastermind.startResetClickHandler = (e) => {
-  console.log(e.target)
   if (e.target.innerHTML === "Reset") {
     window.location.reload();
   }
@@ -162,7 +161,6 @@ mastermind.startResetClickHandler = (e) => {
 
 mastermind.nextAttempt = () => {
   mastermind.attemptNumber++;
-  console.log(mastermind.attemptNumber);
     //only select current levels guessHolders and clueHolders by selecting row$
   mastermind._guessHolders = [...document.querySelectorAll(`.row${mastermind.attemptNumber} .guess-holder`)];
   mastermind._clueHolders = [...document.querySelectorAll(`.row${mastermind.attemptNumber} .clue-holder`)];
@@ -181,7 +179,6 @@ mastermind.nextAttempt = () => {
 }
 mastermind.pinSelectHandleChange = (e) => {
   mastermind.userSelectedPin = e.target.value;
-  console.log(mastermind.userSelectedPin);
 }
 
 mastermind.init = () => {
@@ -213,7 +210,6 @@ mastermind.init = () => {
 //when page loads, start the game.
 document.addEventListener("DOMContentLoaded", function() {
   mastermind.init();
-  console.log(mastermind.rightAnswer);
 });
 
 

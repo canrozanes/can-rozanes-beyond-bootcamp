@@ -25,6 +25,8 @@ button{
   box-shadow: 1px 1px 1px 1px black;
   font-weight: 700;
   cursor: pointer;
+  margin-left: 25px;
+  width: calc(40% - 100px);
 }
 button:active{
   box-shadow: 0px 0px 0px 0px black;
@@ -44,6 +46,16 @@ button:active{
     font-size: 14px;
   }
 }
+@media(max-width: 450px){
+  .wrapper{
+    padding: 0 8px;
+  }
+  button{
+    padding: 0;
+    font-size: 14px;
+    width: calc(40% - 70px)
+  }
+}
 @media(max-width: 400px){
   .wrapper{
     padding: 0 8px;
@@ -51,5 +63,6 @@ button:active{
   button{
     padding: 0;
     font-size: 14px;
+    width: calc(40% - 62px)
   }
 }

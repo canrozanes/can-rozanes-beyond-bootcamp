@@ -1,14 +1,13 @@
 .bottom-row{
   display: flex;
   padding-top: 25px;
-  justify-content: space-between;
   form {
     display: flex;
     width: calc(60% + 75px);
     justify-content: space-between;
     padding: 10px 0;
   }
-  button.start-reset{
+  button{
     margin-left: 25px;
     display: block;
   }
@@ -22,15 +21,15 @@ input[type="radio"]{
   display: none;
 }
 
-@media(max-width: 550px){
+@media(max-width: 450px){
   .bottom-row{
     padding-top: 10px;
-    button.start-reset{
-      margin-left: 10px;
-      width: calc(40% - 70px)
-    }
-    form{
+    form {
       width: calc(60% + 60px);
+      padding: 10px 0;
+    }
+    button{
+      margin-left: 10px;
     }
   }
 }

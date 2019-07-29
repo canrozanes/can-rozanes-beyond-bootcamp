@@ -1,13 +1,11 @@
 .row{
   display: flex;
   padding: 10px 0;
-
 }
 
 .guess-container{
   width: 60%;
   border-radius: 10px;
-  // border: 1px solid black;
   display: flex;
   align-items: center;
   background: rgba(#896d42, 0.6);
@@ -42,8 +40,6 @@
 }
 .row button{
   display: none;
-  margin-left: 25px;
-  width: calc(40% - 100px);
   &.showButton{
     display: block;
   }
@@ -53,15 +49,20 @@
   .row{
     padding: 8px 0;
   }
+
+  .row button{
+    // margin-left: 35px;
+    // width: calc(40% - 70px);
+  }
+}
+@media(max-width: 450px){
   .clue-container{
     margin-left: 10px
   }
   .row button{
     margin-left: 10px;
-    width: calc(40% - 70px);
   }
 }
-
 
 @media(max-width: 376px){
   .row{

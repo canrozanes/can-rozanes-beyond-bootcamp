@@ -19,6 +19,7 @@ mastermind._answerHolders;
 mastermind._answerCover;
 
 mastermind.userSelectedPin;
+
 mastermind.board = [
   [null,null,null,null],
   [null,null,null,null],

@@ -187,7 +187,7 @@ body {
   margin: 0;
   font-size: .85rem;
   background-color: #70D1A4;
-  padding: 25px 0;
+  padding-top: 25px;
 }
 
 main {
@@ -263,7 +263,7 @@ h1 {
   background: -webkit-gradient(linear, left bottom, left top, from(rgba(139, 69, 19, 0.3)), to(rgba(139, 69, 19, 0.3))), url("../assets/wood-background.jpeg");
   background: linear-gradient(0deg, rgba(139, 69, 19, 0.3), rgba(139, 69, 19, 0.3)), url("../assets/wood-background.jpeg");
   background-size: cover;
-  padding: 25px 0;
+  padding: 15px 0;
   border-radius: 10px;
   -webkit-box-shadow: 5px 5px 6px rgba(0, 0, 0, 0.75);
           box-shadow: 5px 5px 6px rgba(0, 0, 0, 0.75);
@@ -527,7 +527,7 @@ h1 {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  padding-top: 25px;
+  padding-top: 15px;
 }
 
 .bottom-row form {

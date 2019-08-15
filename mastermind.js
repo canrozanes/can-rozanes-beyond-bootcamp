@@ -8,6 +8,7 @@ mastermind.attemptNumber = -1;
 
 //Selectors
 mastermind._pinButtons;
+mastermind._pinButtonLabels;
 mastermind._guessHolders;
 mastermind._clueHolders;
 mastermind._checkButton;
@@ -17,7 +18,6 @@ mastermind._closeRulesButton;
 mastermind._rulesPage;
 mastermind._answerHolders;
 mastermind._answerCover;
-
 mastermind.userSelectedPin;
 
 mastermind.board = [
@@ -30,6 +30,7 @@ mastermind.board = [
   [null,null,null,null],
   [null,null,null,null]];
 
+//helper function to generate the random code. 
 mastermind.getRandomInt = (min, max) => {
   min = Math.ceil(min);
   max = Math.floor(max);
@@ -153,9 +154,8 @@ mastermind.startResetClickHandler = (e) => {
     mastermind._startResetButton.innerText = "Reset";
     
     //enable the radio buttons
-    mastermind._pinButtons.forEach(pinButton => {
-      pinButton.disabled = false;
-    });
+    mastermind._pinButtons.forEach( pinButton => pinButton.disabled = false);
+    mastermind._pinButtonLabels.forEach( pinButtonLabel => pinButtonLabel.style.cursor = "pointer");
     mastermind.nextAttempt();
   }
 };
@@ -165,6 +165,7 @@ mastermind.nextAttempt = () => {
     //only select current levels guessHolders and clueHolders by selecting row$
   mastermind._guessHolders = [...document.querySelectorAll(`.row${mastermind.attemptNumber} .guess-holder`)];
   mastermind._clueHolders = [...document.querySelectorAll(`.row${mastermind.attemptNumber} .clue-holder`)];
+  
 
     //only make current levels check button visible using the showButton class.
   mastermind._checkButton = document.querySelector(`.row button.check${mastermind.attemptNumber}`);
@@ -197,6 +198,7 @@ mastermind.init = () => {
     //generate the unique answer for the round
   mastermind.generateRightAnswer(mastermind.colors);
   mastermind._pinButtons = document.querySelectorAll("input[name=pin]");
+  mastermind._pinButtonLabels = document.querySelectorAll("label.pin");
 
   //add event listener for radio buttons and if user clicks a radio button, store the color in a global variable
   mastermind._pinButtons.forEach(pinButton =>

@@ -371,6 +371,7 @@ h1 {
           transform-origin: top;
   -webkit-transition: all 2.00s ease-in-out;
   transition: all 2.00s ease-in-out;
+  border: 1px solid black;
 }
 
 .answer-cover.reveal {
@@ -553,6 +554,10 @@ input[type="radio"]:checked + label {
 
 input[type="radio"] {
   display: none;
+}
+
+label.pin {
+  cursor: default;
 }
 
 @media (max-width: 450px) {

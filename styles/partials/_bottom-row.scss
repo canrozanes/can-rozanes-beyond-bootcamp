@@ -21,6 +21,10 @@ input[type="radio"]{
   display: none;
 }
 
+label.pin{
+  cursor: default
+}
+
 @media(max-width: 450px){
   .bottom-row{
     padding-top: 10px;
